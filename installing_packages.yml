@@ -1,0 +1,23 @@
+---
+- name: installing packages
+  hosts: all
+  become: true
+  #gather_facts: no
+  
+  tasks: 
+   - name: installing packages
+     yum:
+      name: wget,telnet
+      state: latest
+   - name: instaiing httpd 
+     yum:
+      name: httpd
+      state: installed
+   - name: https service start
+     service:
+      name: httpd
+      state: started
+   - name: installing php
+     yum: 
+      name: php
+      state: latest
